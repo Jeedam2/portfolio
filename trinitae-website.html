@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jeeda Masoud — Trinitae Website Redesign</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #f5f2ed;
+    --cream-dark: #ede9e2;
+    --ink: #1a1714;
+    --ink-mid: #4a4540;
+    --ink-light: #8a8480;
+    --accent: #c0392b;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Jost', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.7;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4rem;
+    background: var(--cream);
+    border-bottom: 0.5px solid rgba(26,23,20,0.1);
+  }
+
+  .nav-name { font-family: var(--serif); font-size: 1.1rem; font-weight: 400; letter-spacing: 0.02em; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-mid); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--ink); }
+
+  .hero { padding: 14rem 4rem 8rem; max-width: 1100px; margin: 0 auto; animation: fadeUp 0.9s ease both; }
+  .hero-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem; }
+  .hero-label::after { content: ''; display: block; width: 3rem; height: 0.5px; background: var(--ink-light); }
+  .hero h1 { font-family: var(--serif); font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 300; line-height: 1.05; letter-spacing: -0.01em; margin-bottom: 2rem; }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero-meta { display: flex; gap: 3rem; margin-top: 3rem; padding-top: 2rem; border-top: 0.5px solid rgba(26,23,20,0.12); flex-wrap: wrap; }
+  .meta-item { display: flex; flex-direction: column; gap: 0.3rem; }
+  .meta-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-light); }
+  .meta-value { font-size: 0.9rem; color: var(--ink-mid); font-weight: 400; }
+
+  .hero-image-strip { width: 100%; height: 60vh; background: #1a1714; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .image-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; background: #1e1b18; }
+  .image-placeholder-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+  .image-placeholder-text { font-family: var(--serif); font-size: 1.2rem; color: rgba(255,255,255,0.15); font-style: italic; }
+
+  /* Use real images in hero strip */
+  .hero-strip-real {
+    width: 100%;
+    height: 60vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+  }
+
+  .hero-strip-real img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+
+  .hero-strip-label {
+    position: absolute;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.8rem;
+    border: 0.5px solid rgba(255,255,255,0.3);
+    color: white;
+    background: rgba(0,0,0,0.3);
+    top: 1rem;
+    left: 1rem;
+  }
+
+  .content { max-width: 1100px; margin: 0 auto; padding: 0 4rem; }
+  section { padding: 7rem 0; border-bottom: 0.5px solid rgba(26,23,20,0.1); }
+  section:last-child { border-bottom: none; }
+
+  .section-header { display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: start; margin-bottom: 4rem; }
+  .section-label { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-light); padding-top: 0.4rem; }
+  .section-title { font-family: var(--serif); font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 300; line-height: 1.2; letter-spacing: -0.01em; }
+  .section-title em { font-style: italic; color: var(--accent); }
+
+  .body-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; }
+  .body-text { font-size: 1rem; line-height: 1.8; color: var(--ink-mid); }
+  .body-text p + p { margin-top: 1.2em; }
+
+  /* CHALLENGE GRID */
+  .challenge-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 0.5px solid rgba(26,23,20,0.12);
+    margin: 3rem 0;
+  }
+
+  .challenge-item {
+    padding: 2.5rem;
+    border-right: 0.5px solid rgba(26,23,20,0.12);
+    border-bottom: 0.5px solid rgba(26,23,20,0.12);
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .challenge-item:nth-child(3n) { border-right: none; }
+  .challenge-item:nth-child(4),
+  .challenge-item:nth-child(5),
+  .challenge-item:nth-child(6) { border-bottom: none; }
+
+  .challenge-num { font-family: var(--serif); font-size: 0.85rem; font-style: italic; color: var(--accent); }
+  .challenge-title { font-size: 0.82rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); }
+  .challenge-body { font-size: 0.88rem; color: var(--ink-mid); line-height: 1.7; }
+
+  /* STAT ROW */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin: 4rem 0;
+    border: 0.5px solid rgba(26,23,20,0.12);
+  }
+
+  .stat-item { padding: 2.5rem 2rem; border-right: 0.5px solid rgba(26,23,20,0.12); display: flex; flex-direction: column; gap: 0.5rem; }
+  .stat-item:last-child { border-right: none; }
+  .stat-number { font-family: var(--serif); font-size: 3.5rem; font-weight: 300; line-height: 1; color: var(--accent); }
+  .stat-desc { font-size: 0.75rem; letter-spacing: 0.08em; color: var(--ink-light); text-transform: uppercase; }
+
+  /* BEFORE/AFTER */
+  .before-after {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 2.5rem 0;
+  }
+
+  .ba-item { display: flex; flex-direction: column; gap: 0; }
+
+  .ba-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.5rem 0.8rem;
+    font-weight: 500;
+  }
+
+  .ba-label.before { background: rgba(26,23,20,0.08); color: var(--ink-light); }
+  .ba-label.after { background: var(--accent); color: white; }
+
+  .ba-img {
+    width: 100%;
+    overflow: hidden;
+    background: var(--cream-dark);
+  }
+
+  .ba-img img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+  }
+
+  /* PROCESS STEPS */
+  .process-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 0.5px solid rgba(26,23,20,0.12); margin: 3rem 0; }
+  .process-step { padding: 1.8rem 1.5rem; border-right: 0.5px solid rgba(26,23,20,0.12); display: flex; flex-direction: column; gap: 0.5rem; }
+  .process-step:last-child { border-right: none; }
+  .process-num { font-family: var(--serif); font-size: 0.85rem; font-style: italic; color: var(--accent); }
+  .process-name { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-mid); font-weight: 500; }
+  .process-desc { font-size: 0.82rem; color: var(--ink-light); line-height: 1.6; margin-top: 0.3rem; }
+
+  /* DECISION BLOCK */
+  .decision-block {
+    background: var(--cream-dark);
+    border: 0.5px solid rgba(26,23,20,0.1);
+    padding: 3rem;
+    margin: 3rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .decision-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 1rem; }
+  .decision-copy { font-family: var(--serif); font-size: 1.8rem; font-weight: 300; line-height: 1.3; color: var(--ink); }
+  .decision-copy em { font-style: italic; color: var(--accent); }
+
+  .decision-rationale { font-size: 0.9rem; color: var(--ink-mid); line-height: 1.8; }
+  .decision-rationale ul { list-style: none; margin-top: 1rem; display: flex; flex-direction: column; gap: 0.6rem; }
+  .decision-rationale li { padding-left: 1.2rem; position: relative; font-size: 0.88rem; }
+  .decision-rationale li::before { content: '—'; position: absolute; left: 0; color: var(--accent); }
+
+  /* SOLUTION LIST */
+  .solution-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 0.5px solid rgba(26,23,20,0.12);
+    margin: 2rem 0;
+  }
+
+  .solution-item { padding: 2rem; border-right: 0.5px solid rgba(26,23,20,0.12); }
+  .solution-item:last-child { border-right: none; }
+  .solution-num { font-family: var(--serif); font-size: 0.85rem; font-style: italic; color: var(--accent); margin-bottom: 0.8rem; }
+  .solution-title { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); margin-bottom: 0.8rem; }
+  .solution-body { font-size: 0.88rem; color: var(--ink-mid); line-height: 1.7; }
+
+  /* IMAGE BLOCKS */
+  .img-block { width: 100%; background: #1e1b18; display: flex; align-items: center; justify-content: center; flex-direction: column; min-height: 280px; position: relative; overflow: hidden; margin: 2.5rem 0; }
+  .img-block::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(45deg, rgba(255,255,255,0.01) 0px, rgba(255,255,255,0.01) 1px, transparent 1px, transparent 12px); }
+  .img-block-inner { position: relative; z-index: 1; text-align: center; }
+  .img-slot-label { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 0.4rem; }
+  .img-slot-name { font-family: var(--serif); font-size: 1rem; font-style: italic; color: rgba(255,255,255,0.12); }
+  .img-tag { position: absolute; top: 1.5rem; left: 1.5rem; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.06); padding: 0.4rem 0.8rem; border: 0.5px solid rgba(255,255,255,0.1); }
+  .img-note { font-size: 0.75rem; color: var(--ink-light); font-style: italic; margin-top: -1.5rem; margin-bottom: 2.5rem; }
+
+  /* REAL IMAGE BLOCK */
+  .real-img-block { width: 100%; margin: 2.5rem 0; overflow: hidden; }
+  .real-img-block img { width: 100%; display: block; }
+  .real-img-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2.5rem 0; }
+  .real-img-two-col .col { display: flex; flex-direction: column; }
+  .real-img-two-col img { width: 100%; display: block; }
+  .real-img-label { font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.5rem 0; color: var(--ink-light); }
+
+  /* STATUS */
+  .status-callout { border-left: 3px solid var(--accent); background: var(--cream-dark); padding: 2rem 2.5rem; margin: 3rem 0; display: flex; flex-direction: column; gap: 0.5rem; }
+  .status-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); }
+  .status-text { font-size: 0.95rem; color: var(--ink-mid); line-height: 1.7; }
+
+  /* REFLECTION */
+  .reflection { background: var(--ink); color: var(--cream); padding: 5rem 4rem; }
+  .reflection-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: start; }
+  .reflection-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.35); padding-top: 0.4rem; }
+  .reflection-text { font-family: var(--serif); font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 300; line-height: 1.5; color: var(--cream); }
+  .reflection-text em { font-style: italic; color: #e07060; }
+
+  .back-link { display: inline-flex; align-items: center; gap: 0.6rem; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); text-decoration: none; margin-bottom: 3rem; transition: color 0.2s; }
+  .back-link:hover { color: var(--ink); }
+  .back-link::before { content: '←'; font-size: 0.9rem; }
+
+  footer { padding: 3rem 4rem; border-top: 0.5px solid rgba(26,23,20,0.1); display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; }
+  .footer-name { font-family: var(--serif); font-size: 1rem; font-weight: 400; color: var(--ink-light); }
+  .footer-links { display: flex; gap: 2rem; list-style: none; }
+  .footer-links a { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--ink); }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+  @media (max-width: 768px) {
+    nav { padding: 1.2rem 1.5rem; }
+    .hero { padding: 10rem 1.5rem 5rem; }
+    .content { padding: 0 1.5rem; }
+    .section-header, .body-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .challenge-grid, .stat-row, .process-row, .solution-list { grid-template-columns: 1fr; }
+    .challenge-item { border-right: none !important; }
+    .hero-meta { flex-direction: column; gap: 1.2rem; }
+    .before-after, .real-img-two-col, .decision-block { grid-template-columns: 1fr; }
+    .reflection-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+    .reflection { padding: 3rem 1.5rem; }
+    footer { flex-direction: column; gap: 1.5rem; padding: 2rem 1.5rem; }
+    .hero-strip-real { grid-template-columns: 1fr; }
+    .hero-strip-real img:last-child { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-name">Jeeda Masoud</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Work</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#connect">Connect</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <a href="index.html" class="back-link">All work</a>
+  <p class="hero-label">Case study</p>
+  <h1>Trinitae Website<br /><em>Redesign</em></h1>
+  <div class="hero-meta">
+    <div class="meta-item">
+      <span class="meta-label">Role</span>
+      <span class="meta-value">Lead Service Designer</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Company</span>
+      <span class="meta-value">Trinitae Cosmetics</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Platform</span>
+      <span class="meta-value">Shopify 2.0</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Focus</span>
+      <span class="meta-value">Content · IA · UX · Shopify</span>
+    </div>
+  </div>
+</div>
+
+<!-- HERO — BEFORE/AFTER STRIP -->
+<div class="hero-strip-real">
+  <img src="trinitae_old_homepage.png" alt="Trinitae website before redesign" />
+  <img src="Trinitae_New_HP.png" alt="Trinitae website after redesign" />
+</div>
+
+<div class="content">
+
+  <!-- OVERVIEW -->
+  <section>
+    <div class="section-header">
+      <span class="section-label">Overview</span>
+      <h2 class="section-title">Six years of technical debt — <em>cleared.</em></h2>
+    </div>
+    <div class="body-grid">
+      <div></div>
+      <div class="body-text">
+        <p>Trinitae's Shopify storefront had been running on the same theme for six years — a discontinued theme that predated Shopify 2.0 and had quietly accumulated limitations that were holding the brand back. Outdated product descriptions, inconsistently sized images, a navigation structure that didn't reflect the brand's actual product lines, and a visual experience that had drifted far from the identity defined in the brand guidelines.</p>
+        <p>This project was a full website overhaul: new theme, new IA, 165+ rewritten product descriptions, a complete image audit and resize, and a content system aligned with the brand guidelines I had built in parallel. It also required sustained stakeholder management — building the case for change with a team that had lived with the old site for years.</p>
+      </div>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-item">
+        <span class="stat-number">165+</span>
+        <span class="stat-desc">Product descriptions rewritten</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">6</span>
+        <span class="stat-desc">Years on a discontinued theme</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">2.0</span>
+        <span class="stat-desc">Shopify version — migrated from legacy</span>
+      </div>
+    </div>
+
+    <div class="status-callout">
+      <p class="status-label">Project status</p>
+      <p class="status-text">The redesigned site is live. Content migration, image reshoots, and navigation restructure are complete. Additional optimizations are ongoing.</p>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section>
+    <div class="section-header">
+      <span class="section-label">The problem</span>
+      <h2 class="section-title">A site that no longer <em>reflected the brand.</em></h2>
+    </div>
+
+    <div class="body-grid" style="margin-bottom: 3rem;">
+      <div></div>
+      <div class="body-text">
+        <p>The old site wasn't broken — it just hadn't kept pace with where the brand had grown. Six years of product additions, price changes, and new collections had been layered onto a foundation that was never designed to scale. The result was a storefront that felt disconnected from the premium, nature-rooted identity Trinitae had built.</p>
+      </div>
+    </div>
+
+    <!-- BEFORE/AFTER HOMEPAGE -->
+    <div class="before-after">
+      <div class="ba-item">
+        <span class="ba-label before">Before</span>
+        <div class="ba-img">
+          <img src="trinitae_old_homepage.png" alt="Old Trinitae homepage" />
+        </div>
+      </div>
+      <div class="ba-item">
+        <span class="ba-label after">After</span>
+        <div class="ba-img">
+          <img src="Trinitae_New_HP.png" alt="New Trinitae homepage" />
+        </div>
+      </div>
+    </div>
+
+    <div class="challenge-grid">
+      <div class="challenge-item">
+        <p class="challenge-num">01</p>
+        <p class="challenge-title">Discontinued theme</p>
+        <p class="challenge-body">The site was running on a legacy Shopify theme that had been discontinued — meaning no updates, no Shopify 2.0 features, and a growing list of things the team simply couldn't do.</p>
+      </div>
+      <div class="challenge-item">
+        <p class="challenge-num">02</p>
+        <p class="challenge-title">Outdated content</p>
+        <p class="challenge-body">Many product descriptions were wrong, out of date, or inconsistent with the brand voice. Ingredient lists didn't match current formulas. Benefit claims varied between products.</p>
+      </div>
+      <div class="challenge-item">
+        <p class="challenge-num">03</p>
+        <p class="challenge-title">Navigation mismatch</p>
+        <p class="challenge-body">The navigation structure reflected how the site had been built over time, not how customers shopped. Categories were inconsistent and didn't align with the brand's actual product lines.</p>
+      </div>
+      <div class="challenge-item">
+        <p class="challenge-num">04</p>
+        <p class="challenge-title">Image inconsistency</p>
+        <p class="challenge-body">Product images were different sizes, shot in different styles, and scaled inconsistently across the storefront — undermining the premium visual experience the brand deserved.</p>
+      </div>
+      <div class="challenge-item">
+        <p class="challenge-num">05</p>
+        <p class="challenge-title">Brand-site disconnect</p>
+        <p class="challenge-body">The site didn't reflect the brand guidelines being developed in parallel. Typography, tone, and content structure all needed to be brought into alignment.</p>
+      </div>
+      <div class="challenge-item">
+        <p class="challenge-num">06</p>
+        <p class="challenge-title">Getting buy-in</p>
+        <p class="challenge-body">Perhaps the hardest challenge: building the case for change with a team deeply familiar with the existing site. The work required sustained stakeholder engagement, evidence-based proposals, and careful expectation management throughout.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section>
+    <div class="section-header">
+      <span class="section-label">Process</span>
+      <h2 class="section-title">Build the case. <em>Then build the site.</em></h2>
+    </div>
+
+    <div class="process-row">
+      <div class="process-step">
+        <span class="process-num">01</span>
+        <span class="process-name">Audit</span>
+        <p class="process-desc">Full content audit: product descriptions, ingredient lists, navigation labels, image inventory, and SEO metadata.</p>
+      </div>
+      <div class="process-step">
+        <span class="process-num">02</span>
+        <span class="process-name">Stakeholder alignment</span>
+        <p class="process-desc">Theme research, comparison proposals, and iterative review sessions to build consensus on the new direction.</p>
+      </div>
+      <div class="process-step">
+        <span class="process-num">03</span>
+        <span class="process-name">Content & IA</span>
+        <p class="process-desc">Navigation restructure, 165+ product description rewrites, ingredient standardization, and copy aligned to brand guidelines.</p>
+      </div>
+      <div class="process-step">
+        <span class="process-num">04</span>
+        <span class="process-name">Build & launch</span>
+        <p class="process-desc">Shopify 2.0 theme implementation, image audit and resize, product page structure, and phased content migration.</p>
+      </div>
+    </div>
+
+    <!-- STAKEHOLDER ALIGNMENT -->
+    <div class="decision-block">
+      <div>
+        <p class="decision-label">The hardest part</p>
+        <p class="decision-copy">Getting to <em>yes</em> before a single pixel changed.</p>
+      </div>
+      <div class="decision-rationale">
+        <p>A site that had worked for six years is a hard thing to move away from. My approach was to frame the conversation around what the team was missing — not what was wrong. That meant:</p>
+        <ul>
+          <li>Documenting the specific Shopify 2.0 features unavailable on the legacy theme and what they would unlock</li>
+          <li>Researching and presenting multiple theme options with detailed comparisons, then narrowing through collaborative review</li>
+          <li>Making the change feel incremental and reversible, not a wholesale replacement of something familiar</li>
+          <li>Tying every decision back to the brand guidelines we had developed together — so the redesign felt like a natural extension of work already in progress</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- NAVIGATION IA -->
+    <div class="section-header" style="margin-top: 4rem;">
+      <span class="section-label">Navigation redesign</span>
+      <h2 class="section-title" style="font-size: 1.8rem;">From how it was built <em>to how customers shop.</em></h2>
+    </div>
+
+    <div class="body-grid" style="margin-bottom: 2.5rem;">
+      <div></div>
+      <div class="body-text">
+        <p>The old navigation had grown organically over six years, resulting in a structure that reflected the order products were added rather than how customers thought about their needs. The new navigation was restructured around customer intent — organized by skin concern and product category, with labels that matched the brand's preferred terminology from the guidelines.</p>
+      </div>
+    </div>
+
+    <div class="before-after">
+      <div class="ba-item">
+        <span class="ba-label before">Before — Collections</span>
+        <div class="ba-img">
+          <img src="trinitae_old_collections_page.png" alt="Old collections page" />
+        </div>
+      </div>
+      <div class="ba-item">
+        <span class="ba-label after">After — Collections</span>
+        <div class="ba-img">
+          <img src="trinitae_new_Collections_page.png" alt="New collections page" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <section>
+    <div class="section-header">
+      <span class="section-label">Content redesign</span>
+      <h2 class="section-title">165+ descriptions. <em>One voice.</em></h2>
+    </div>
+
+    <div class="body-grid" style="margin-bottom: 3rem;">
+      <div></div>
+      <div class="body-text">
+        <p>Every product description was rewritten from scratch — not just updated, but rebuilt using the brand's voice framework, preferred terms glossary, and product tone profiles defined in the brand guidelines. Each description follows a consistent structure: a lead benefit statement, a sensory product narrative, and an ingredients and directions section.</p>
+        <p>Ingredient lists were audited against current formulas and standardized to INCI format. Benefit claims were aligned across product lines to avoid inconsistencies. The result is a content system that any team member or partner can extend as new products are added.</p>
+      </div>
+    </div>
+
+    <div class="before-after">
+      <div class="ba-item">
+        <span class="ba-label before">Before — Product page</span>
+        <div class="ba-img">
+          <img src="trinitae_old_product_page.png" alt="Old product page" />
+        </div>
+      </div>
+      <div class="ba-item">
+        <span class="ba-label after">After — Product page</span>
+        <div class="ba-img">
+          <img src="trinitae_new_product_page.png" alt="New product page" />
+        </div>
+      </div>
+    </div>
+
+    <div class="solution-list">
+      <div class="solution-item">
+        <p class="solution-num">Content</p>
+        <p class="solution-title">165+ rewrites</p>
+        <p class="solution-body">Every product description rewritten using the brand voice framework — sensory, warm, grounded, and aligned to the preferred terms glossary.</p>
+      </div>
+      <div class="solution-item">
+        <p class="solution-num">Structure</p>
+        <p class="solution-title">Consistent page architecture</p>
+        <p class="solution-body">New product page structure with expandable Ingredients, How to Use, and Ideal For sections — clean, scalable, and on-brand.</p>
+      </div>
+      <div class="solution-item">
+        <p class="solution-num">Visuals</p>
+        <p class="solution-title">Image standardization</p>
+        <p class="solution-body">All product images audited, resized to consistent dimensions, and some reshot — creating a unified visual experience across the full catalogue.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUTCOME -->
+  <section>
+    <div class="section-header">
+      <span class="section-label">Outcome</span>
+      <h2 class="section-title">A storefront that finally <em>matches the brand.</em></h2>
+    </div>
+
+    <div class="body-grid">
+      <div></div>
+      <div class="body-text">
+        <p>The redesigned Trinitae storefront is live on Shopify 2.0 — with a visual experience, navigation structure, and content system that reflect the brand's identity for the first time. The brand guidelines and the website now speak the same language.</p>
+        <p>The new theme unlocks Shopify 2.0 features the team had been unable to access for years. The content system is scalable — as new products are added, the structure, tone, and terminology are all defined. And the stakeholder relationship, built carefully through the buy-in process, is stronger for having gone through the change together.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- REFLECTION -->
+<div class="reflection">
+  <div class="reflection-inner">
+    <p class="reflection-label">Reflection</p>
+    <p class="reflection-text">
+      The 165 product descriptions were the visible part of this project. The harder work was invisible — building enough trust and shared understanding that the team felt confident making a change they'd been hesitant about for years. <em>Getting to yes is a design problem too.</em> And the answer, as always, is in the details: evidence, patience, and making the unfamiliar feel safe.
+    </p>
+  </div>
+</div>
+
+<footer>
+  <p class="footer-name">Jeeda Masoud</p>
+  <ul class="footer-links">
+    <li><a href="trinitae-brand.html">← Trinitae Brand Guidelines</a></li>
+    <li><a href="index.html">All work</a></li>
+    <li><a href="index.html#connect">Connect</a></li>
+  </ul>
+</footer>
+
+</body>
+</html>
