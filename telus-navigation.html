@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jeeda Masoud — TELUS Website Navigation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #f5f2ed;
+    --cream-dark: #ede9e2;
+    --ink: #1a1714;
+    --ink-mid: #4a4540;
+    --ink-light: #8a8480;
+    --accent: #c0392b;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Jost', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.7;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4rem;
+    background: var(--cream);
+    border-bottom: 0.5px solid rgba(26,23,20,0.1);
+  }
+
+  .nav-name { font-family: var(--serif); font-size: 1.1rem; font-weight: 400; letter-spacing: 0.02em; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-mid); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--ink); }
+
+  .hero { padding: 14rem 4rem 8rem; max-width: 1100px; margin: 0 auto; animation: fadeUp 0.9s ease both; }
+
+  .hero-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem; }
+  .hero-label::after { content: ''; display: block; width: 3rem; height: 0.5px; background: var(--ink-light); }
+
+  .hero h1 { font-family: var(--serif); font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 300; line-height: 1.05; letter-spacing: -0.01em; margin-bottom: 2rem; }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+
+  .hero-meta { display: flex; gap: 3rem; margin-top: 3rem; padding-top: 2rem; border-top: 0.5px solid rgba(26,23,20,0.12); flex-wrap: wrap; }
+  .meta-item { display: flex; flex-direction: column; gap: 0.3rem; }
+  .meta-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-light); }
+  .meta-value { font-size: 0.9rem; color: var(--ink-mid); font-weight: 400; }
+
+  .hero-image-strip { width: 100%; height: 60vh; background: #1a1714; display: flex; align-items: center; justify-content: center; }
+  .image-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; background: #1e1b18; }
+  .image-placeholder-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+  .image-placeholder-text { font-family: var(--serif); font-size: 1.2rem; color: rgba(255,255,255,0.15); font-style: italic; }
+
+  .content { max-width: 1100px; margin: 0 auto; padding: 0 4rem; }
+
+  section { padding: 7rem 0; border-bottom: 0.5px solid rgba(26,23,20,0.1); }
+  section:last-child { border-bottom: none; }
+
+  .section-header { display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: start; margin-bottom: 4rem; }
+  .section-label { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-light); padding-top: 0.4rem; }
+  .section-title { font-family: var(--serif); font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 300; line-height: 1.2; letter-spacing: -0.01em; }
+  .section-title em { font-style: italic; color: var(--accent); }
+
+  .body-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; }
+  .body-text { font-size: 1rem; line-height: 1.8; color: var(--ink-mid); }
+  .body-text p + p { margin-top: 1.2em; }
+
+  /* PROCESS STEPS */
+  .process-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 0.5px solid rgba(26,23,20,0.12); margin: 3rem 0; }
+  .process-step { padding: 1.8rem 1.5rem; border-right: 0.5px solid rgba(26,23,20,0.12); display: flex; flex-direction: column; gap: 0.5rem; }
+  .process-step:last-child { border-right: none; }
+  .process-num { font-family: var(--serif); font-size: 0.85rem; font-style: italic; color: var(--accent); }
+  .process-name { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-mid); font-weight: 500; }
+  .process-desc { font-size: 0.82rem; color: var(--ink-light); line-height: 1.6; margin-top: 0.3rem; }
+
+  /* IMAGE BLOCKS */
+  .img-block { width: 100%; background: #1e1b18; display: flex; align-items: center; justify-content: center; flex-direction: column; min-height: 320px; position: relative; overflow: hidden; margin: 2.5rem 0; }
+  .img-block::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(45deg, rgba(255,255,255,0.01) 0px, rgba(255,255,255,0.01) 1px, transparent 1px, transparent 12px); }
+  .img-block-inner { position: relative; z-index: 1; text-align: center; }
+  .img-slot-label { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 0.4rem; }
+  .img-slot-name { font-family: var(--serif); font-size: 1rem; font-style: italic; color: rgba(255,255,255,0.12); }
+  .img-tag { position: absolute; top: 1.5rem; left: 1.5rem; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.06); padding: 0.4rem 0.8rem; border: 0.5px solid rgba(255,255,255,0.1); }
+  .img-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2.5rem 0; }
+  .img-note { font-size: 0.75rem; color: var(--ink-light); font-style: italic; margin-top: -1.5rem; margin-bottom: 2.5rem; }
+
+  /* APPROACH GRID */
+  .approach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 0.5px solid rgba(26,23,20,0.12); margin: 2rem 0; }
+  .approach-item { padding: 2.5rem; border-right: 0.5px solid rgba(26,23,20,0.12); display: flex; flex-direction: column; gap: 0.6rem; }
+  .approach-item:last-child { border-right: none; }
+  .approach-num { font-family: var(--serif); font-size: 0.85rem; font-style: italic; color: var(--accent); }
+  .approach-title { font-size: 0.82rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); }
+  .approach-body { font-size: 0.88rem; color: var(--ink-mid); line-height: 1.7; }
+
+  /* SOLUTION OUTCOMES */
+  .outcome-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 0.5px solid rgba(26,23,20,0.12); margin: 2rem 0; }
+  .outcome-item { padding: 2rem 1.5rem; border-right: 0.5px solid rgba(26,23,20,0.12); display: flex; flex-direction: column; gap: 0.5rem; }
+  .outcome-item:last-child { border-right: none; }
+  .outcome-title { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+  .outcome-body { font-size: 0.88rem; color: var(--ink-mid); line-height: 1.7; }
+
+  /* SEGMENT BLOCK */
+  .segment-block { background: var(--cream-dark); border: 0.5px solid rgba(26,23,20,0.1); padding: 3rem; margin: 3rem 0; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+  .segment-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 1rem; }
+  .segment-title { font-family: var(--serif); font-size: 1.6rem; font-weight: 300; line-height: 1.3; color: var(--ink); }
+  .segment-title em { font-style: italic; color: var(--accent); }
+  .segment-body { font-size: 0.9rem; color: var(--ink-mid); line-height: 1.8; }
+  .segment-body p + p { margin-top: 1em; }
+
+  /* REFLECTION */
+  .reflection { background: var(--ink); color: var(--cream); padding: 5rem 4rem; }
+  .reflection-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: start; }
+  .reflection-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.35); padding-top: 0.4rem; }
+  .reflection-text { font-family: var(--serif); font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 300; line-height: 1.5; color: var(--cream); }
+  .reflection-text em { font-style: italic; color: #e07060; }
+
+  .back-link { display: inline-flex; align-items: center; gap: 0.6rem; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); text-decoration: none; margin-bottom: 3rem; transition: color 0.2s; }
+  .back-link:hover { color: var(--ink); }
+  .back-link::before { content: '←'; font-size: 0.9rem; }
+
+  footer { padding: 3rem 4rem; border-top: 0.5px solid rgba(26,23,20,0.1); display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; }
+  .footer-name { font-family: var(--serif); font-size: 1rem; font-weight: 400; color: var(--ink-light); }
+  .footer-links { display: flex; gap: 2rem; list-style: none; }
+  .footer-links a { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--ink); }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+  @media (max-width: 768px) {
+    nav { padding: 1.2rem 1.5rem; }
+    .hero { padding: 10rem 1.5rem 5rem; }
+    .content { padding: 0 1.5rem; }
+    .section-header, .body-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .process-row, .approach-grid, .outcome-grid { grid-template-columns: 1fr; }
+    .process-step, .approach-item, .outcome-item { border-right: none !important; border-bottom: 0.5px solid rgba(26,23,20,0.12); }
+    .hero-meta { flex-direction: column; gap: 1.2rem; }
+    .segment-block { grid-template-columns: 1fr; }
+    .img-two-col { grid-template-columns: 1fr; }
+    .reflection-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+    .reflection { padding: 3rem 1.5rem; }
+    footer { flex-direction: column; gap: 1.5rem; padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-name">Jeeda Masoud</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Work</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#connect">Connect</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <a href="index.html" class="back-link">All work</a>
+  <p class="hero-label">Case study</p>
+  <h1>TELUS Website<br /><em>Navigation</em></h1>
+  <div class="hero-meta">
+    <div class="meta-item">
+      <span class="meta-label">Role</span>
+      <span class="meta-value">Senior Content Strategist</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Company</span>
+      <span class="meta-value">TELUS Digital</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Industry</span>
+      <span class="meta-value">Telecommunications</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Focus</span>
+      <span class="meta-value">IA · UX Research · Wayfinding</span>
+    </div>
+  </div>
+</div>
+
+<div class="hero-image-strip">
+  <div class="image-placeholder">
+    <p class="image-placeholder-label">Replace with</p>
+    <p class="image-placeholder-text">TELUS.com/business — redesigned navigation</p>
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- OVERVIEW -->
+  <section>
+    <div class="section-header">
+      <span class="section-label">Overview</span>
+      <h2 class="section-title">Finding the right solution — <em>without getting lost.</em></h2>
+    </div>
+    <div class="body-grid">
+      <div></div>
+      <div class="body-text">
+        <p>TELUS.com/business is the destination for business customers seeking telecommunications solutions — from mobility and internet to security and cloud services. With an extensive range of products and content, the site had become overwhelming and disorienting for users trying to find the right solution for their business.</p>
+        <p>This project was a full website navigation overhaul: reorganizing the site using information architecture models, tree testing research, and a segmented content strategy that distinguished between the needs of small businesses and medium-to-large enterprises.</p>
+        <p>I led content strategy across the full project — owning the content audit, copy deck, sitemap, and the UX writing that shipped with the redesigned navigation.</p>
+      </div>
+    </div>
+
+    <div class="img-block" style="min-height: 300px;">
+      <div class="img-tag">Before — current state</div>
+      <div class="img-block-inner">
+        <p class="img-slot-label">Image slot</p>
+        <p class="img-slot-name">TELUS.com/business — original navigation</p>
+      </div>
+    </div>
+    <p class="img-note">Swap with the current state screenshot</p>
+  </section>
+
+  <!-- PROBLEM -->
+  <section>
+    <div class="section-header">
+      <span class="section-label">The problem</span>
+      <h2 class="section-title">Overwhelmed. Disoriented. <em>Lost.</em></h2>
+    </div>
+    <div class="body-grid">
+      <div></div>
+      <div class="body-text">
+        <p>The TELUS business website covered a wide range of products and services — but its breadth had become a liability. The navigation structure didn't reflect how business customers thought about their needs, and the content hierarchy made it difficult to distinguish between solutions designed for small businesses versus enterprise-level organizations.</p>
+        <p>Users were getting lost. The site's extensive product range and inconsistent content structure meant that even customers who knew what they were looking for struggled to find it.</p>
+      </div>
+    </div>
+
+    <div class="approach-grid">
+      <div class="approach-item">
+        <p class="approach-num">01</p>
+        <p class="approach-title">Overwhelming content</p>
+        <p class="approach-body">An extensive range of products and content with no clear hierarchy left users unable to quickly identify which solutions were relevant to their business size or needs.</p>
+      </div>
+      <div class="approach-item">
+        <p class="approach-num">02</p>
+        <p class="approach-title">Poor wayfinding</p>
+        <p class="approach-body">Users got lost navigating between product categories. The site lacked clear signposting between mobility, internet, security, and cloud services — causing disorientation and drop-off.</p>
+      </div>
+      <div class="approach-item">
+        <p class="approach-num">03</p>
+        <p class="approach-title">No segmentation</p>
+        <p class="approach-body">Small businesses and medium-to-large enterprises have fundamentally different needs. The existing navigation treated them identically — creating friction for both audiences.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section>
+    <div class="section-header">
+      <span class="section-label">Process</span>
+      <h2 class="section-title">Audit. Research. <em>Redesign.</em></h2>
+    </div>
+
+    <div class="process-row">
+      <div class="process-step">
+        <span class="process-num">01</span>
+        <span class="process-name">Discovery</span>
+        <p class="process-desc">Comprehensive content audit covering copy, headers, CTAs, URLs, and site data including page visits and average time on page.</p>
+      </div>
+      <div class="process-step">
+        <span class="process-num">02</span>
+        <span class="process-name">Research</span>
+        <p class="process-desc">Optimal Workshop tree testing to identify where and why users got lost — directly informing new navigation categories and IA decisions.</p>
+      </div>
+      <div class="process-step">
+        <span class="process-num">03</span>
+        <span class="process-name">Design</span>
+        <p class="process-desc">New content hierarchy models, sitemap, copy deck, and segment-based navigation structure tailored to small vs. enterprise business needs.</p>
+      </div>
+    </div>
+
+    <!-- DISCOVERY -->
+    <div class="section-header" style="margin-top: 4rem;">
+      <span class="section-label">Part I — Discovery</span>
+      <h2 class="section-title" style="font-size: 1.8rem;">Understanding what <em>wasn't working</em></h2>
+    </div>
+
+    <div class="body-grid" style="margin-bottom: 2.5rem;">
+      <div></div>
+      <div class="body-text">
+        <p>The content audit covered the full TELUS.com/business surface — not just copy, but headers, CTAs, URLs, and quantitative site data like page visits and average time on page. This comprehensive approach was essential for a full website overhaul: you need to know what exists, how it's performing, and what can be cut before you can design something better.</p>
+        <p>Tree testing in Optimal Workshop gave us behavioral data to complement the audit — showing us exactly where users were getting lost in the existing navigation and why. The research findings directly shaped the new page categories and navigation structure.</p>
+      </div>
+    </div>
+
+    <div class="img-two-col">
+      <div class="img-block" style="min-height: 260px; margin: 0;">
+        <div class="img-tag">Content audit</div>
+        <div class="img-block-inner">
+          <p class="img-slot-label">Image slot</p>
+          <p class="img-slot-name">Content audit — copy, CTAs, URLs, site data</p>
+        </div>
+      </div>
+      <div class="img-block" style="min-height: 260px; margin: 0;">
+        <div class="img-tag">User research</div>
+        <div class="img-block-inner">
+          <p class="img-slot-label">Image slot</p>
+          <p class="img-slot-name">Optimal Workshop tree testing results</p>
+        </div>
+      </div>
+    </div>
+    <p class="img-note">Swap with the Content Audit and User Research Sample screenshots</p>
+
+    <!-- DESIGN -->
+    <div class="section-header" style="margin-top: 4rem;">
+      <span class="section-label">Part II — Design</span>
+      <h2 class="section-title" style="font-size: 1.8rem;">Building the <em>new structure</em></h2>
+    </div>
+
+    <div class="body-grid" style="margin-bottom: 2.5rem;">
+      <div></div>
+      <div class="body-text">
+        <p>With research findings in hand, the design phase focused on building a new information architecture from the ground up. The sitemap defined page categories, dropdown menu items, copy requirements, and copy status — a single source of truth for the whole team throughout the redesign.</p>
+        <p>The copy deck translated the new IA into actual content — element type, section headers, body copy, and CTAs — giving the development and design teams everything they needed to build the new navigation accurately.</p>
+      </div>
+    </div>
+
+    <div class="img-two-col">
+      <div class="img-block" style="min-height: 260px; margin: 0;">
+        <div class="img-tag">Copy deck</div>
+        <div class="img-block-inner">
+          <p class="img-slot-label">Image slot</p>
+          <p class="img-slot-name">Copy deck — element types, headlines, CTAs</p>
+        </div>
+      </div>
+      <div class="img-block" style="min-height: 260px; margin: 0;">
+        <div class="img-tag">Sitemap</div>
+        <div class="img-block-inner">
+          <p class="img-slot-label">Image slot</p>
+          <p class="img-slot-name">Sitemap — page categories, dropdown structure</p>
+        </div>
+      </div>
+    </div>
+    <p class="img-note">Swap with the Copy Deck and Sitemap screenshots</p>
+  </section>
+
+  <!-- SOLUTIONS -->
+  <section>
+    <div class="section-header">
+      <span class="section-label">Solutions</span>
+      <h2 class="section-title">Segmented by design. <em>Built for both.</em></h2>
+    </div>
+
+    <div class="body-grid" style="margin-bottom: 3rem;">
+      <div></div>
+      <div class="body-text">
+        <p>The redesigned TELUS.com/business embraced a segmented approach — distinguishing between the needs of small businesses and medium-to-large enterprises, and organizing products accordingly. The result was a navigation that felt immediately relevant regardless of which segment a customer belonged to.</p>
+      </div>
+    </div>
+
+    <div class="segment-block">
+      <div>
+        <p class="segment-label">The strategic decision</p>
+        <p class="segment-title">Small business and enterprise have <em>different needs.</em> The navigation should reflect that.</p>
+      </div>
+      <div class="segment-body">
+        <p>By strategically organizing products based on business segments, we streamlined navigation and decluttered content — giving each audience a path that made sense for their scale, their priorities, and the kinds of solutions they were actually looking for.</p>
+        <p>The segmented approach also made the site easier to maintain and extend: adding new products or services to the right segment was straightforward, where previously every addition had compounded the existing confusion.</p>
+      </div>
+    </div>
+
+    <div class="img-block" style="min-height: 340px;">
+      <div class="img-tag">After — redesigned navigation</div>
+      <div class="img-block-inner">
+        <p class="img-slot-label">Image slot</p>
+        <p class="img-slot-name">TELUS.com/business — redesigned navigation</p>
+      </div>
+    </div>
+    <p class="img-note">Swap with the solution screenshot showing the redesigned TELUS.com/business</p>
+  </section>
+
+  <!-- OUTCOME -->
+  <section>
+    <div class="section-header">
+      <span class="section-label">Outcome</span>
+      <h2 class="section-title">Simpler to navigate. <em>Easier to convert.</em></h2>
+    </div>
+
+    <div class="body-grid" style="margin-bottom: 2rem;">
+      <div></div>
+      <div class="body-text">
+        <p>The website revamp led to notable improvements across key usability and performance metrics — validating the segmented IA approach and the content work that underpinned it.</p>
+      </div>
+    </div>
+
+    <div class="outcome-grid">
+      <div class="outcome-item">
+        <p class="outcome-title">Time on page</p>
+        <p class="outcome-body">Increase in average time on page — users engaging more deeply with content that was now relevant and findable.</p>
+      </div>
+      <div class="outcome-item">
+        <p class="outcome-title">Bounce rate</p>
+        <p class="outcome-body">Decrease in bounce rate — fewer users leaving immediately after landing, a signal that the navigation was meeting them where they were.</p>
+      </div>
+      <div class="outcome-item">
+        <p class="outcome-title">Call offloading</p>
+        <p class="outcome-body">Reduction in calls — customers finding answers on the site rather than reaching for the phone, reducing support load.</p>
+      </div>
+      <div class="outcome-item">
+        <p class="outcome-title">Conversion rate</p>
+        <p class="outcome-body">Rise in conversion rates — the clearer path from discovery to solution translated directly into business outcomes.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- REFLECTION -->
+<div class="reflection">
+  <div class="reflection-inner">
+    <p class="reflection-label">Reflection</p>
+    <p class="reflection-text">
+      Navigation is invisible when it works. The goal of this project was to make a complex, product-rich site feel effortless — so customers could spend their time evaluating solutions, not hunting for them. <em>The segmentation decision was the unlock:</em> once we stopped treating all business customers as one audience, everything else fell into place.
+    </p>
+  </div>
+</div>
+
+<footer>
+  <p class="footer-name">Jeeda Masoud</p>
+  <ul class="footer-links">
+    <li><a href="telus-overview.html">← TELUS Overview Redesign</a></li>
+    <li><a href="index.html">All work</a></li>
+    <li><a href="index.html#connect">Connect</a></li>
+  </ul>
+</footer>
+
+</body>
+</html>
