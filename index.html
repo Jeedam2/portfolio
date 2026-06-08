@@ -201,6 +201,18 @@
     .tl-co { font-size: 10.5px; font-weight: 300; letter-spacing: .03em; opacity: .52; margin-top: 2px; }
 
     /* ── CONTACT ────────────────────────────────── */
+    /* ── RECOMMENDATIONS ───────────────────────── */
+    .s-cream { background: var(--cream); }
+    .rec-w { padding: 90px 0; }
+    .recs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; margin-top: 1rem; }
+    .rec { display: flex; flex-direction: column; }
+    .rec-mark { font-family: var(--s); font-size: 3rem; line-height: 1; color: var(--rose); opacity: .6; margin-bottom: .2rem; }
+    .rec-q { font-family: var(--s); font-size: 1.08rem; font-weight: 400; line-height: 1.62; opacity: .82; }
+    .rec-by { margin-top: 1.6rem; padding-top: 1.1rem; border-top: 1px solid rgba(74,63,53,.14); }
+    .rec-name { font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; opacity: .7; display: block; }
+    .rec-role { font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; opacity: .42; margin-top: 4px; display: block; }
+    @media (max-width: 900px) { .recs { grid-template-columns: 1fr; gap: 2.4rem; } }
+    
     .con-w { padding: 90px 0 120px; }
     .con-i { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 4rem; }
     .con-h {
@@ -446,6 +458,42 @@
     </div>
   </section>
 
+  <!-- ══ RECOMMENDATIONS — cream ═══════════════════ -->
+  <section id="recs" class="s-cream">
+    <div class="w rec-w">
+      <div class="lbl r"><span class="lbl-t">KIND WORDS</span></div>
+      <div class="recs r">
+
+        <div class="rec">
+          <div class="rec-mark">&ldquo;</div>
+          <p class="rec-q">Jeeda consistently demonstrated her ability to think beyond the immediate task at hand, taking a holistic approach to problem-solving that always considered the broader systems and principles in play. She tirelessly worked on, and thought about, how to frame the work we were doing into something other teams could utilize and run with on their own.</p>
+          <div class="rec-by">
+            <span class="rec-name">Anna Borg</span>
+            <span class="rec-role">Lead Product Designer · Great Question</span>
+          </div>
+        </div>
+
+        <div class="rec">
+          <div class="rec-mark">&ldquo;</div>
+          <p class="rec-q">Jeeda is a senior content designer who ignores boundaries. She's a big-picture thinker who cares about the details, and she's constantly experimenting with visual design and development tools. She's also one of those people who multiplies the quality and output of the team around her, asking the right questions, demystifying concepts, and leaving people with fresh new perspectives to consider.</p>
+          <div class="rec-by">
+            <span class="rec-name">Elizabeth McGuane</span>
+            <span class="rec-role">UX Director · Shopify</span>
+          </div>
+        </div>
+
+        <div class="rec">
+          <div class="rec-mark">&ldquo;</div>
+          <p class="rec-q">From the outset, Jeeda demonstrated a profound ability to ask insightful questions that went beyond the surface level. This innate curiosity enabled her to identify broader problems and devise innovative solutions that significantly elevated the quality of our work. Jeeda's talent for creating compelling visualizations helped us communicate complex ideas and concepts with clarity, ensuring a seamless understanding amongst our team and stakeholders.</p>
+          <div class="rec-by">
+            <span class="rec-name">Steven Neff</span>
+            <span class="rec-role">Staff Product Designer · Adobe</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
   <!-- ── divider 4 ──────────────────────────────── -->
   <div class="grid-divider"></div>
 
