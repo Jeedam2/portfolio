@@ -70,6 +70,7 @@
     .s-work  { background: var(--swork); }
     .s-exp   { background: var(--sexp); }
     .s-blue  { background: var(--blue); }
+.s-navy  { background: #3F5F86; color: #E6E2DA; }
 
     /* ── SVG GRID DIVIDERS ───────────────────── */
     .svg-divider { display: block; width: 100%; overflow: visible; margin: 0; padding: 0; background: transparent; line-height: 0; font-size: 0; }
@@ -86,8 +87,9 @@
     .ticker { overflow: hidden; height: 36px; display: flex; align-items: center; }
     .ticker-t { display: flex; gap: 2.8rem; white-space: nowrap; width: max-content; animation: ticker-scroll 65s linear infinite; }
     .ticker-t span { font-size: 11px; letter-spacing: .2em; font-weight: 300; color: var(--txt); opacity: .52; }
+.tk-b .ticker-t span { color: #E6E2DA; opacity: .55; }
     .tk-y { background: var(--yell); }
-    .tk-b { background: var(--swork); }
+    .tk-b { background: #3F5F86; }
     @keyframes ticker-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
     /* ── LAYOUT ─────────────────────────────────── */
@@ -308,7 +310,7 @@
   <div class="grid-divider"></div>
 
   <!-- ══ ABOUT — butter yellow ═════════════════════ -->
-  <section id="about" class="s-yell" style="overflow:hidden;">
+  <section id="about" class="s-navy" style="overflow:hidden;">
     <img class="bot-img about-bot" src="images/botanical-blue.png" alt="">
     <div class="w about-w">
       <div class="lbl r"><span class="lbl-t">ABOUT</span></div>
@@ -573,7 +575,7 @@
   <div class="grid-divider"></div>
 
   <!-- ══ CONTACT — dusty blue ══════════════════════ -->
-  <section id="contact" class="s-blue" style="overflow:hidden;">
+  <section id="contact" class="s-navy" style="overflow:hidden;">
     <div class="w con-w">
       <div class="lbl r"><span class="lbl-t">CONNECT</span></div>
       <div class="con-i r">
