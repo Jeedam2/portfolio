@@ -91,6 +91,21 @@
     .tk-y { background: var(--yell); }
     .tk-b { background: #3F5F86; }
     @keyframes ticker-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    /* ── LOGO TICKER ────────────────────────────── */
+    .logo-strip {
+      overflow: hidden; background: var(--sand);
+      border-top: 1px solid rgba(63,95,134,.08);
+      border-bottom: 1px solid rgba(63,95,134,.08);
+      padding: 16px 0;
+    }
+    .logo-track {
+      display: flex; align-items: center;
+      gap: clamp(40px, 7vw, 90px);
+      width: max-content;
+      animation: logo-scroll 50s linear infinite;
+    }
+    .logo-track img { width: auto; opacity: .5; flex-shrink: 0; }
+    @keyframes logo-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
     /* ── LAYOUT ─────────────────────────────────── */
     .w { max-width: 1100px; margin: 0 auto; padding: 0 clamp(24px, 4vw, 48px); }
@@ -311,6 +326,25 @@
     </div>
   </section>
 
+  <!-- ══ LOGO TICKER ══════════════════════════════ -->
+  <div class="logo-strip">
+    <div class="logo-track">
+      <img style="height:20px" src="images/logo-shopify.png" alt="Shopify">
+      <img style="height:18px" src="images/logo-telus.png" alt="TELUS Digital">
+      <img style="height:20px" src="images/logo-yahoo.png" alt="Yahoo">
+      <img style="height:16px" src="images/logo-um.png" alt="Universal McCann">
+      <img style="height:18px" src="images/logo-neuron.png" alt="The Neuron">
+      <img style="height:22px" src="images/logo-tayeb.png" alt="Tayeb">
+      <img style="height:24px" src="images/logo-trinitae.png" alt="Trinitae">
+      <img style="height:20px" src="images/logo-shopify.png" alt="">
+      <img style="height:18px" src="images/logo-telus.png" alt="">
+      <img style="height:20px" src="images/logo-yahoo.png" alt="">
+      <img style="height:16px" src="images/logo-um.png" alt="">
+      <img style="height:18px" src="images/logo-neuron.png" alt="">
+      <img style="height:22px" src="images/logo-tayeb.png" alt="">
+      <img style="height:24px" src="images/logo-trinitae.png" alt="">
+    </div>
+  </div>
   <!-- ── divider 1 ──────────────────────────────── -->
   <div class="grid-divider"></div>
 
