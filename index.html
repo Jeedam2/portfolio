@@ -108,6 +108,15 @@
       background: radial-gradient(ellipse, rgba(237,232,200,.72) 0%, transparent 68%);
       pointer-events: none;
     }
+    .h-bloom {
+      position: absolute; top: 0; bottom: 0; right: 0; width: 42%;
+      background-image: url("images/blossom-hero.jpg");
+      background-size: 230% auto; background-position: center 95%;
+      mix-blend-mode: multiply; opacity: .72; pointer-events: none; z-index: 1;
+      -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 35%, transparent 100%);
+      mask-image: linear-gradient(to left, rgba(0,0,0,1) 35%, transparent 100%);
+    }
+    @media (max-width: 700px) { .h-bloom { width: 70%; opacity: .5; } }
     .h-glow-b {
       position: absolute; bottom: -40px; left: -60px;
       width: 300px; height: 300px;
