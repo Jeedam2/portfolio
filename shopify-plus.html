@@ -778,6 +778,14 @@
   }
 
   .hero { animation: fadeUp 0.9s ease both; }
+
+  /* ── LIGHTBOX (click project screenshots to zoom) ── */
+  .img-block img { cursor: zoom-in; }
+  .lightbox { position: fixed; inset: 0; z-index: 1000; background: rgba(42,61,84,0.93); display: none; overflow: auto; cursor: zoom-out; padding: 4vh 0; }
+  .lightbox.open { display: block; }
+  .lightbox img { display: block; width: 92vw; max-width: 1600px; height: auto; margin: 0 auto; background: #F1EEE7; box-shadow: 0 24px 70px rgba(0,0,0,0.45); border-radius: 4px; }
+  .lightbox-hint { position: fixed; top: 1.2rem; right: 1.5rem; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.6); font-family: var(--sans); z-index: 1001; pointer-events: none; }
+  body.lb-open { overflow: hidden; }
 </style>
 </head>
 <body>
@@ -1116,5 +1124,22 @@
   </ul>
 </footer>
 
+
+<script>
+(function(){
+  var lb = document.createElement('div');
+  lb.className = 'lightbox';
+  lb.innerHTML = '<span class="lightbox-hint">Click anywhere or press Esc to close</span><img alt="">';
+  document.body.appendChild(lb);
+  var lbImg = lb.querySelector('img');
+  function open(src, alt){ lbImg.src = src; lbImg.alt = alt || ''; lb.classList.add('open'); document.body.classList.add('lb-open'); lb.scrollTop = 0; }
+  function close(){ lb.classList.remove('open'); document.body.classList.remove('lb-open'); lbImg.src = ''; }
+  document.querySelectorAll('.img-block img').forEach(function(img){
+    img.addEventListener('click', function(){ open(img.src, img.alt); });
+  });
+  lb.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
+})();
+</script>
 </body>
 </html>
