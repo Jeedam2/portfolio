@@ -675,70 +675,7 @@
     </div>
   </div>
 
-  <!-- ── TWEAKS PANEL ──────────────────────────────── -->
-  <div id="tweaks" style="display:none; position:fixed; bottom:24px; right:24px; z-index:9950;
-    width:248px; background:var(--cream);
-    border:1px solid rgba(74,63,53,.16); border-radius:9px;
-    padding:20px 20px 18px; box-shadow:0 8px 28px rgba(74,63,53,.12);
-    font-family:var(--b);">
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:18px;">
-      <span style="font-size:8px; letter-spacing:.26em; color:var(--txt); opacity:.45;">TWEAKS</span>
-      <button id="tweak-close" style="background:none;border:none;font-size:14px;color:var(--txt);opacity:.35;cursor:none;padding:0;line-height:1;">✕</button>
-    </div>
-    <div style="margin-bottom:18px;">
-      <div style="font-size:9.5px; letter-spacing:.08em; color:var(--txt); opacity:.48; margin-bottom:9px;">Highlight color</div>
-      <div style="display:flex; gap:7px;">
-        <button class="ts" data-c="#8FA8B8" style="width:26px;height:26px;border-radius:50%;background:#8FA8B8;border:none;cursor:none;"></button>
-        <button class="ts" data-c="#8FA896" style="width:26px;height:26px;border-radius:50%;background:#8FA896;border:none;cursor:none;"></button>
-        <button class="ts" data-c="#C4A882" style="width:26px;height:26px;border-radius:50%;background:#C4A882;border:none;cursor:none;"></button>
-        <button class="ts" data-c="#B8A8C0" style="width:26px;height:26px;border-radius:50%;background:#B8A8C0;border:none;cursor:none;"></button>
-      </div>
-    </div>
-    <div>
-      <div style="font-size:9.5px; letter-spacing:.08em; color:var(--txt); opacity:.48; margin-bottom:9px;">About typography</div>
-      <div style="display:flex; gap:7px;">
-        <button id="f-ser" style="font-family:var(--s);font-size:11px;color:var(--txt);opacity:.6;background:none;border:1px solid rgba(74,63,53,.22);padding:5px 13px;border-radius:4px;cursor:none;">Serif</button>
-        <button id="f-san" style="font-family:var(--b);font-size:11px;color:var(--txt);opacity:.6;background:none;border:1px solid rgba(74,63,53,.22);padding:5px 13px;border-radius:4px;cursor:none;">Sans</button>
-      </div>
-    </div>
-  </div>
-
   <script>
-    /* ─── Tweaks ───────────────────────────── */
-    const TW = /*EDITMODE-BEGIN*/{"hlColor":"#8FA8B8","bodyFont":"serif"}/*EDITMODE-END*/;
-
-    function applyTW(t) {
-      const fill = t.hlColor + '99';
-      document.querySelectorAll('.hl').forEach(el => {
-        el.style.backgroundImage = `linear-gradient(transparent 63%, ${fill} 63%)`;
-      });
-      document.querySelectorAll('.about-p').forEach(el => {
-        el.style.fontFamily = t.bodyFont === 'sans'
-          ? "'Jost', sans-serif"
-          : "'Cormorant Garamond', Georgia, serif";
-      });
-    }
-    applyTW(TW);
-
-    window.addEventListener('message', e => {
-      if (!e.data?.type) return;
-      if (e.data.type === '__activate_edit_mode')   document.getElementById('tweaks').style.display = 'block';
-      if (e.data.type === '__deactivate_edit_mode') document.getElementById('tweaks').style.display = 'none';
-      if (e.data.type === '__edit_mode_set_keys')   { Object.assign(TW, e.data.edits); applyTW(TW); }
-    });
-    window.parent.postMessage({ type: '__edit_mode_available' }, '*');
-
-    document.getElementById('tweak-close').onclick = () => {
-      document.getElementById('tweaks').style.display = 'none';
-      window.parent.postMessage({ type: '__edit_mode_dismissed' }, '*');
-    };
-    document.querySelectorAll('.ts').forEach(b => b.addEventListener('click', () => {
-      TW.hlColor = b.dataset.c; applyTW(TW);
-      window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { hlColor: TW.hlColor } }, '*');
-    }));
-    document.getElementById('f-ser').onclick = () => { TW.bodyFont = 'serif'; applyTW(TW); window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { bodyFont: 'serif' } }, '*'); };
-    document.getElementById('f-san').onclick = () => { TW.bodyFont = 'sans';  applyTW(TW); window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { bodyFont: 'sans'  } }, '*'); };
-
     /* ─── Cursor ───────────────────────────── */
     const cur = document.getElementById('cur');
     let mx = 0, my = 0, cx = 0, cy = 0;
@@ -748,7 +685,7 @@
       cur.style.left = cx + 'px'; cur.style.top = cy + 'px';
       requestAnimationFrame(tick);
     })();
-    document.querySelectorAll('a, .card, #tweaks button').forEach(el => {
+    document.querySelectorAll('a, .card').forEach(el => {
       el.addEventListener('mouseenter', () => cur.classList.add('s'));
       el.addEventListener('mouseleave', () => cur.classList.remove('s'));
     });
