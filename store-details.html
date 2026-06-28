@@ -73,6 +73,7 @@
   }
 
   .nav-links a:hover { color: var(--ink); }
+  .nav-toggle, .nav-burger { display: none; }
 
   /* HERO */
   .hero {
@@ -699,16 +700,59 @@
   }
 
   /* FOOTER */
-  .foot { background: #6F9FC8; border-top: 1px solid rgba(74,63,53,.12); }
-  .foot-i {
-    max-width: 1100px; margin: 0 auto; padding: 1.4rem clamp(24px, 4vw, 48px);
-    display: flex; justify-content: space-between;
+  footer {
+    padding: 3rem 4rem;
+    border-top: 0.5px solid rgba(42,61,84,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
   }
-  .foot-i span { font-size: 8px; letter-spacing: .18em; color: #F1EEE7; opacity: .7; }
+
+  .footer-name {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--ink-light);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--ink); }
 
   /* RESPONSIVE */
   @media (max-width: 768px) {
     nav { padding: 1.2rem 1.5rem; }
+    .nav-name { white-space: nowrap; }
+    .nav-burger { display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 26px; height: 22px; cursor: pointer; }
+    .nav-burger span { display: block; height: 1.5px; width: 100%; background: var(--ink); opacity: 0.6; transition: transform 0.3s ease, opacity 0.3s ease; }
+    .nav-links {
+      position: absolute; top: 100%; left: 0; right: 0;
+      flex-direction: column; gap: 0;
+      background: var(--cream);
+      border-bottom: 0.5px solid rgba(42,61,84,0.1);
+      max-height: 0; overflow: hidden; transition: max-height 0.4s ease;
+    }
+    .nav-links li { width: 100%; }
+    .nav-links a { display: block; padding: 1.1rem 1.5rem; font-size: 0.8rem; border-top: 0.5px solid rgba(42,61,84,0.06); }
+    .nav-toggle:checked ~ .nav-links { max-height: 340px; }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(2) { opacity: 0; }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
     .hero { padding: 10rem 1.5rem 5rem; }
     .content { padding: 0 1.5rem; }
     .section-header, .body-grid { grid-template-columns: 1fr; gap: 1.5rem; }
@@ -719,7 +763,7 @@
     .img-two-col { grid-template-columns: 1fr; }
     .reflection-inner { grid-template-columns: 1fr; gap: 1.5rem; }
     .reflection { padding: 3rem 1.5rem; }
-    .foot-i { flex-direction: column; gap: 1rem; }
+    footer { flex-direction: column; gap: 1.5rem; padding: 2rem 1.5rem; }
   }
 
   @keyframes fadeUp {
@@ -742,6 +786,8 @@
 
 <nav>
   <a href="index.html" class="nav-name">Jeeda Masoud</a>
+  <input type="checkbox" id="navtoggle" class="nav-toggle" aria-hidden="true">
+  <label for="navtoggle" class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></label>
   <ul class="nav-links">
     <li><a href="index.html#about">About</a></li>
     <li><a href="index.html#work">Work</a></li>
@@ -1026,13 +1072,14 @@
   </div>
 </div>
 
-<div class="foot">
-  <div class="foot-i">
-    <span>© 2026 JEEDA MASOUD</span>
-    <span>UX &amp; CONTENT DESIGNER</span>
-    <span>THIS SITE IS LIVE. ALWAYS UPDATING. ALWAYS EVOLVING.</span>
-  </div>
-</div>
+<footer>
+  <p class="footer-name">Jeeda Masoud</p>
+  <ul class="footer-links">
+    <li><a href="shopify-plus.html">← Shopify Plus Migration</a></li>
+    <li><a href="index.html">All work</a></li>
+    <li><a href="index.html#contact">Connect</a></li>
+  </ul>
+</footer>
 
 
 <script>
