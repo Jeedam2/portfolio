@@ -440,6 +440,10 @@
   .lightbox img { display: block; width: 92vw; max-width: 1600px; height: auto; margin: 0 auto; background: #F1EEE7; box-shadow: 0 24px 70px rgba(0,0,0,0.45); border-radius: 4px; }
   .lightbox-hint { position: fixed; top: 1.2rem; right: 1.5rem; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.6); font-family: var(--sans); z-index: 1001; pointer-events: none; }
   body.lb-open { overflow: hidden; }
+  .foot { background: #6F9FC8; border-top: 1px solid rgba(74,63,53,.12); }
+  .foot-i { max-width: 1100px; margin: 0 auto; padding: 1.4rem clamp(24px, 4vw, 48px); display: flex; justify-content: space-between; }
+  .foot-i span { font-size: 8px; letter-spacing: .18em; color: #F1EEE7; opacity: .7; }
+  @media (max-width: 768px) { .foot-i { flex-direction: column; gap: 1rem; } }
 </style>
 </head>
 <body>
@@ -747,14 +751,13 @@
   </div>
 </div>
 
-<footer>
-  <p class="footer-name">Jeeda Masoud</p>
-  <ul class="footer-links">
-    <li><a href="store-details.html">← Store Details Migration</a></li>
-    <li><a href="index.html#work">All work</a></li>
-    <li><a href="index.html#contact">Connect</a></li>
-  </ul>
-</footer>
+<div class="foot">
+  <div class="foot-i">
+    <span>© 2026 JEEDA MASOUD</span>
+    <span>UX &amp; CONTENT DESIGNER</span>
+    <span>THIS SITE IS LIVE. ALWAYS UPDATING. ALWAYS EVOLVING.</span>
+  </div>
+</div>
 
 
 <script>
