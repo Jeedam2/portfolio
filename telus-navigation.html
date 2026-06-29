@@ -182,11 +182,17 @@
   .lightbox img { display: block; width: 92vw; max-width: 1600px; height: auto; margin: 0 auto; background: #F1EEE7; box-shadow: 0 24px 70px rgba(0,0,0,0.45); border-radius: 4px; }
   .lightbox-hint { position: fixed; top: 1.2rem; right: 1.5rem; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.6); font-family: var(--sans); z-index: 1001; pointer-events: none; }
   body.lb-open { overflow: hidden; }
+
+.totop-wrap{text-align:center;padding:1.25rem 24px;border-top:1px solid rgba(42,61,84,.12)}
+.totop{display:inline-flex;align-items:center;gap:.55em;font-family:var(--sans);font-size:12px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);opacity:.55;text-decoration:none;transition:opacity .25s ease,color .25s ease}
+.totop .arr{display:inline-block;transition:transform .25s ease}
+.totop:hover{opacity:1;color:var(--accent)}
+.totop:hover .arr{transform:translateY(-3px)}
 </style>
 </head>
 <body>
 
-<nav>
+<nav id="top">
   <a href="index.html" class="nav-name">Jeeda Masoud</a>
   <input type="checkbox" id="navtoggle" class="nav-toggle" aria-hidden="true">
   <label for="navtoggle" class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></label>
@@ -403,6 +409,10 @@
       Navigation is invisible when it works. The goal of this project was to make a complex, product-rich site feel effortless — so customers could spend their time evaluating solutions, not hunting for them. <em>The segmentation decision was the unlock:</em> once we stopped treating all business customers as one audience, everything else fell into place.
     </p>
   </div>
+</div>
+
+<div class="totop-wrap">
+  <a href="#top" class="totop">Back to top <span class="arr">&#8593;</span></a>
 </div>
 
 <div class="foot">

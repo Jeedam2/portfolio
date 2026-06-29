@@ -306,11 +306,17 @@
     display: flex; justify-content: space-between;
   }
   .foot-i span { font-size: 8px; letter-spacing: .18em; color: #F1EEE7; opacity: .7; }
+
+.totop-wrap{text-align:center;padding:1.25rem 24px;border-top:1px solid rgba(42,61,84,.12)}
+.totop{display:inline-flex;align-items:center;gap:.55em;font-family:var(--sans);font-size:12px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);opacity:.55;text-decoration:none;transition:opacity .25s ease,color .25s ease}
+.totop .arr{display:inline-block;transition:transform .25s ease}
+.totop:hover{opacity:1;color:var(--accent)}
+.totop:hover .arr{transform:translateY(-3px)}
 </style>
 </head>
 <body>
 
-<nav>
+<nav id="top">
   <a href="index.html" class="nav-name">Jeeda Masoud</a>
   <input type="checkbox" id="navtoggle" class="nav-toggle" aria-hidden="true">
   <label for="navtoggle" class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></label>
@@ -337,8 +343,8 @@
       <span class="meta-value">Trinitae Cosmetics</span>
     </div>
     <div class="meta-item">
-      <span class="meta-label">Platform</span>
-      <span class="meta-value">Shopify 2.0</span>
+      <span class="meta-label">Industry</span>
+      <span class="meta-value">Luxury Skincare</span>
     </div>
     <div class="meta-item">
       <span class="meta-label">Focus</span>
@@ -604,6 +610,10 @@
       The 165 product descriptions were the visible part of this project. The harder work was invisible — building enough trust and shared understanding that the team felt confident making a change they'd been hesitant about for years. <em>Getting to yes is a design problem too.</em> And the answer, as always, is in the details: evidence, patience, and making the unfamiliar feel safe.
     </p>
   </div>
+</div>
+
+<div class="totop-wrap">
+  <a href="#top" class="totop">Back to top <span class="arr">&#8593;</span></a>
 </div>
 
 <div class="foot">

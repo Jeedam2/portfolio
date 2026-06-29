@@ -444,11 +444,17 @@
   .foot-i { max-width: 1100px; margin: 0 auto; padding: 1.4rem clamp(24px, 4vw, 48px); display: flex; justify-content: space-between; }
   .foot-i span { font-size: 8px; letter-spacing: .18em; color: #F1EEE7; opacity: .7; }
   @media (max-width: 768px) { .foot-i { flex-direction: column; gap: 1rem; } }
+
+.totop-wrap{text-align:center;padding:1.25rem 24px;border-top:1px solid rgba(42,61,84,.12)}
+.totop{display:inline-flex;align-items:center;gap:.55em;font-family:var(--sans);font-size:12px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);opacity:.55;text-decoration:none;transition:opacity .25s ease,color .25s ease}
+.totop .arr{display:inline-block;transition:transform .25s ease}
+.totop:hover{opacity:1;color:var(--accent)}
+.totop:hover .arr{transform:translateY(-3px)}
 </style>
 </head>
 <body>
 
-<nav>
+<nav id="top">
   <a href="index.html" class="nav-name">Jeeda Masoud</a>
   <input type="checkbox" id="navtoggle" class="nav-toggle" aria-hidden="true">
   <label for="navtoggle" class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></label>
@@ -749,6 +755,10 @@
       The number that stays with me from this project isn't the +60% or the +21% — it's the 99.4%. When nearly every customer who encounters a redesigned experience chooses to stay, it means the content did its job: <em>it got out of the way and let people do what they came to do.</em> That's the goal every time.
     </p>
   </div>
+</div>
+
+<div class="totop-wrap">
+  <a href="#top" class="totop">Back to top <span class="arr">&#8593;</span></a>
 </div>
 
 <div class="foot">
