@@ -107,8 +107,9 @@
 
     /* ── MARQUEE STRIPS ─────────────────────────── */
     .ticker { overflow: hidden; height: 36px; display: flex; align-items: center; }
-    .ticker-t { display: flex; gap: 2.8rem; white-space: nowrap; width: max-content; animation: ticker-scroll 65s linear infinite; }
-    .ticker-t span { font-size: 11px; letter-spacing: .2em; font-weight: 300; color: var(--txt); opacity: .52; }
+    .ticker-t { display: flex; white-space: nowrap; width: max-content; animation: ticker-scroll 130s linear infinite; }
+    .ticker-t span { font-size: 11px; letter-spacing: .2em; font-weight: 300; color: var(--txt); opacity: .52; margin-right: 2.8rem; }
+    .tk-y .ticker-t { animation-duration: 195s; }
 .tk-b .ticker-t span, .tk-y .ticker-t span { color: #E6E2DA; opacity: .55; }
     .tk-y { background: #3F5F86; }
     .tk-b { background: #3F5F86; }
@@ -122,11 +123,10 @@
     }
     .logo-track {
       display: flex; align-items: center;
-      gap: clamp(40px, 7vw, 90px);
       width: max-content;
-      animation: logo-scroll 50s linear infinite;
+      animation: logo-scroll 100s linear infinite;
     }
-    .logo-track img { width: auto; opacity: .5; flex-shrink: 0; }
+    .logo-track img { width: auto; opacity: .5; flex-shrink: 0; margin-right: clamp(40px, 7vw, 90px); }
     @keyframes logo-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
     /* ── LAYOUT ─────────────────────────────────── */
@@ -217,6 +217,7 @@
 
     /* ── WORK — editorial cards ─────────────────── */
     .work-w { padding: 90px 0; }
+    .work-intro { font-family: var(--s); font-size: 1.2rem; font-weight: 300; line-height: 1.6; color: var(--txt); opacity: .66; max-width: 540px; margin: 1.1rem 0 2.8rem; }
     .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.8rem; }
     .card {
       background: var(--cream); border-radius: 5px; overflow: hidden;
@@ -356,27 +357,17 @@
     <div class="w h-c">
       <span class="h-name r">Jeeda Masoud</span>
       <h1 class="r">I design systems<br>with <em>meaning &amp; clarity</em></h1>
-      <p class="h-sub r">UX Strategy &middot; UX Writing &middot; Content Design</p>
+      <p class="h-sub r">Strategy &middot; Structure &middot; Language &middot; Systems</p>
     </div>
   </section>
 
   <!-- ══ LOGO TICKER ══════════════════════════════ -->
   <div class="logo-strip">
     <div class="logo-track">
-      <img style="height:20px" src="images/logo-shopify.png" alt="Shopify">
-      <img style="height:18px" src="images/logo-telus.png" alt="TELUS Digital">
-      <img style="height:20px" src="images/logo-yahoo.png" alt="Yahoo">
-      <img style="height:16px" src="images/logo-um.png" alt="Universal McCann">
-      <img style="height:18px" src="images/logo-neuron.png" alt="The Neuron">
-      <img style="height:22px" src="images/logo-tayeb.png" alt="Tayeb">
-      <img style="height:24px" src="images/logo-trinitae.png" alt="Trinitae">
-      <img style="height:20px" src="images/logo-shopify.png" alt="">
-      <img style="height:18px" src="images/logo-telus.png" alt="">
-      <img style="height:20px" src="images/logo-yahoo.png" alt="">
-      <img style="height:16px" src="images/logo-um.png" alt="">
-      <img style="height:18px" src="images/logo-neuron.png" alt="">
-      <img style="height:22px" src="images/logo-tayeb.png" alt="">
-      <img style="height:24px" src="images/logo-trinitae.png" alt="">
+      <img style="height:20px" src="images/logo-shopify.png" alt="Shopify"><img style="height:18px" src="images/logo-telus.png" alt="TELUS Digital"><img style="height:20px" src="images/logo-yahoo.png" alt="Yahoo"><img style="height:16px" src="images/logo-um.png" alt="Universal McCann"><img style="height:18px" src="images/logo-neuron.png" alt="The Neuron"><img style="height:22px" src="images/logo-tayeb.png" alt="Tayeb"><img style="height:24px" src="images/logo-trinitae.png" alt="Trinitae">
+      <img style="height:20px" src="images/logo-shopify.png" alt=""><img style="height:18px" src="images/logo-telus.png" alt=""><img style="height:20px" src="images/logo-yahoo.png" alt=""><img style="height:16px" src="images/logo-um.png" alt=""><img style="height:18px" src="images/logo-neuron.png" alt=""><img style="height:22px" src="images/logo-tayeb.png" alt=""><img style="height:24px" src="images/logo-trinitae.png" alt="">
+      <img style="height:20px" src="images/logo-shopify.png" alt=""><img style="height:18px" src="images/logo-telus.png" alt=""><img style="height:20px" src="images/logo-yahoo.png" alt=""><img style="height:16px" src="images/logo-um.png" alt=""><img style="height:18px" src="images/logo-neuron.png" alt=""><img style="height:22px" src="images/logo-tayeb.png" alt=""><img style="height:24px" src="images/logo-trinitae.png" alt="">
+      <img style="height:20px" src="images/logo-shopify.png" alt=""><img style="height:18px" src="images/logo-telus.png" alt=""><img style="height:20px" src="images/logo-yahoo.png" alt=""><img style="height:16px" src="images/logo-um.png" alt=""><img style="height:18px" src="images/logo-neuron.png" alt=""><img style="height:22px" src="images/logo-tayeb.png" alt=""><img style="height:24px" src="images/logo-trinitae.png" alt="">
     </div>
   </div>
 
@@ -406,7 +397,7 @@
 
         <div class="svc">
           <div class="ico"><svg viewBox="0 0 48 48"><circle cx="24" cy="11" r="3"/><circle cx="14" cy="34" r="3"/><circle cx="34" cy="34" r="3"/><path d="M24,14 L15,31"/><path d="M24,14 L33,31"/></svg></div>
-          <div class="svc-name">Information Architecture &amp; Navigation Design</div>
+          <div class="svc-name">Information Architecture &amp; Navigation</div>
         </div>
 
         <div class="svc">
@@ -456,8 +447,12 @@
   <!-- ── marquee strip — yellow ──────────────── -->
   <div class="ticker tk-y">
     <div class="ticker-t">
-      <span>CLEAR LANGUAGE</span><span>·</span><span>CONSIDERED SYSTEMS</span><span>·</span><span>EFFORTLESS EXPERIENCES</span><span>·</span>
-      <span>CLEAR LANGUAGE</span><span>·</span><span>CONSIDERED SYSTEMS</span><span>·</span><span>EFFORTLESS EXPERIENCES</span><span>·</span>
+      <span>STRATEGY</span><span>·</span><span>STRUCTURE</span><span>·</span><span>LANGUAGE</span><span>·</span><span>SYSTEMS</span><span>·</span>
+      <span>STRATEGY</span><span>·</span><span>STRUCTURE</span><span>·</span><span>LANGUAGE</span><span>·</span><span>SYSTEMS</span><span>·</span>
+      <span>STRATEGY</span><span>·</span><span>STRUCTURE</span><span>·</span><span>LANGUAGE</span><span>·</span><span>SYSTEMS</span><span>·</span>
+      <span>STRATEGY</span><span>·</span><span>STRUCTURE</span><span>·</span><span>LANGUAGE</span><span>·</span><span>SYSTEMS</span><span>·</span>
+      <span>STRATEGY</span><span>·</span><span>STRUCTURE</span><span>·</span><span>LANGUAGE</span><span>·</span><span>SYSTEMS</span><span>·</span>
+      <span>STRATEGY</span><span>·</span><span>STRUCTURE</span><span>·</span><span>LANGUAGE</span><span>·</span><span>SYSTEMS</span><span>·</span>
     </div>
   </div>
 
@@ -466,6 +461,7 @@
 
     <div class="w work-w">
       <div class="lbl r"><span class="lbl-t">SELECTED WORK</span></div>
+      <p class="work-intro r">Selected work exploring content, systems, and digital experiences.</p>
       <!-- 2-column editorial card grid -->
       <div class="cards r">
 
@@ -560,6 +556,8 @@
   <!-- ── marquee strip — blue ──────────────────── -->
   <div class="ticker tk-b">
     <div class="ticker-t">
+      <span>JEEDA MASOUD</span><span>·</span><span>UX &amp; CONTENT DESIGNER</span><span>·</span><span>AVAILABLE FOR CONTRACT &amp; FULL-TIME</span><span>·</span>
+      <span>JEEDA MASOUD</span><span>·</span><span>UX &amp; CONTENT DESIGNER</span><span>·</span><span>AVAILABLE FOR CONTRACT &amp; FULL-TIME</span><span>·</span>
       <span>JEEDA MASOUD</span><span>·</span><span>UX &amp; CONTENT DESIGNER</span><span>·</span><span>AVAILABLE FOR CONTRACT &amp; FULL-TIME</span><span>·</span>
       <span>JEEDA MASOUD</span><span>·</span><span>UX &amp; CONTENT DESIGNER</span><span>·</span><span>AVAILABLE FOR CONTRACT &amp; FULL-TIME</span><span>·</span>
     </div>
