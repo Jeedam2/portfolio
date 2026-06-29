@@ -696,40 +696,13 @@
   }
 
   /* FOOTER */
-  footer {
-    padding: 3rem 4rem;
-    border-top: 0.5px solid rgba(42,61,84,0.1);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1100px;
-    margin: 0 auto;
+  .foot { background: #6F9FC8; border-top: 1px solid rgba(74,63,53,.12); }
+  .foot-i {
+    max-width: 1100px; margin: 0 auto; padding: 1.4rem clamp(24px, 4vw, 48px);
+    display: flex; justify-content: space-between;
   }
-
-  .footer-name {
-    font-family: var(--serif);
-    font-size: 1rem;
-    font-weight: 400;
-    color: var(--ink-light);
-  }
-
-  .footer-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-  }
-
-  .footer-links a {
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-light);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  .footer-links a:hover { color: var(--ink); }
-
+  .foot-i span { font-size: 8px; letter-spacing: .18em; color: #F1EEE7; opacity: .7; }
+ 
   /* BACK LINK */
   .back-link {
     display: inline-flex;
@@ -815,6 +788,7 @@
   <label for="navtoggle" class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></label>
   <ul class="nav-links">
     <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#services">Services</a></li>
     <li><a href="index.html#work">Work</a></li>
     <li><a href="index.html#exp">Experience</a></li>
     <li><a href="index.html#contact">Connect</a></li>
@@ -863,7 +837,7 @@
       <div class="body-text">
         <p>The Shopify Plus Admin was built to help high-growth merchants manage multi-store organizations — but over two years, it had become a liability. Page load times averaged 27+ seconds. Store creation errors ran at 34%. Analytics adoption sat at just 15%.</p>
         <p>Merchants were jumping between multiple tabs and admins just to complete basic daily tasks. This project was a full migration: taking the separate Plus Admin and integrating it into the main Shopify Admin in a way that was faster, clearer, and built to scale.</p>
-        <p>I was embedded as Senior Content Designer within a cross-functional team of UX, Product, Engineering, Data, and Marketing — owning content and product design across the migration from discovery through to launch.</p>
+        <p>I was embedded as a Senior Content Designer within a cross-functional team of UX, Product, Engineering, Data, and Marketing — owning content and product design across the migration from discovery through to launch.</p>
       </div>
     </div>
 
@@ -892,7 +866,7 @@
     <div class="body-grid">
       <div></div>
       <div class="body-text">
-        <p>The Plus admin had started as a focused tool for enterprise merchants. As Shopify's merchant base grew in complexity, so did the admin — but without a coherent information architecture to support it. Three things made this untenable.</p>
+        <p>The Plus admin had started as a focused tool for enterprise merchants. As Shopify's merchant base grew in complexity, so did the admin — but without a coherent information architecture to support it. Four things made this untenable.</p>
       </div>
     </div>
 
@@ -1004,16 +978,16 @@
     </div>
 
     <div class="ia-compare">
-      <div class="ia-model">
-        <p class="ia-model-label">Model A</p>
+      <div class="ia-model selected">
+        <p class="ia-model-label">Model A <span class="selected-tag">Selected</span></p>
         <div class="ia-tier"><div class="ia-tier-item tier-account">User Account</div></div>
         <div class="ia-tier"><div class="ia-tier-item tier-nav">Admin Navigation</div></div>
         <div class="ia-tier"><div class="ia-tier-item tier-org">Organization</div></div>
         <div class="ia-tier"><div class="ia-tier-item tier-commerce">Commerce</div></div>
       </div>
       <div class="vs-text">vs.</div>
-      <div class="ia-model selected">
-        <p class="ia-model-label">Model B <span class="selected-tag">Selected</span></p>
+      <div class="ia-model">
+        <p class="ia-model-label">Model B</p>
         <div class="ia-tier"><div class="ia-tier-item tier-account">User Account</div></div>
         <div class="ia-tier"><div class="ia-tier-item tier-nav">Admin Navigation</div></div>
         <div class="ia-tier"><div class="ia-tier-item tier-commerce">Commerce</div></div>
@@ -1021,7 +995,18 @@
       </div>
     </div>
 
-    <!-- CONTENT DECISION -->
+        <div class="img-two-col">
+      <div class="img-block" style="min-height: 480px; margin: 0;">
+        <div class="img-tag">Email audit</div>
+        <img src="images/shopify-plus-email-audit.png" alt="Email audit — invite flows" style="width:100%;height:100%;object-fit:contain;position:absolute;inset:0;background:#f5f2ed;padding:1.5rem;" />
+      </div>
+      <div class="img-block" style="min-height: 480px; margin: 0;">
+        <div class="img-tag">Wireframes</div>
+        <img src="images/shopify-plus-wireframes.png" alt="Low-fidelity wireframes" style="width:100%;height:100%;object-fit:contain;position:absolute;inset:0;background:#f5f2ed;padding:1.5rem;" />
+      </div>
+    </div>
+   
+   <!-- CONTENT DECISION -->
     <div class="decision-block">
       <div>
         <p class="decision-label">Content decision</p>
@@ -1038,17 +1023,6 @@
             <li>Users may choose to browse rather than search — this CTA accommodates both behaviours</li>
           </ul>
         </div>
-      </div>
-    </div>
-
-    <div class="img-two-col">
-      <div class="img-block" style="min-height: 480px; margin: 0;">
-        <div class="img-tag">Email audit</div>
-        <img src="images/shopify-plus-email-audit.png" alt="Email audit — invite flows" style="width:100%;height:100%;object-fit:contain;position:absolute;inset:0;background:#f5f2ed;padding:1.5rem;" />
-      </div>
-      <div class="img-block" style="min-height: 480px; margin: 0;">
-        <div class="img-tag">Wireframes</div>
-        <img src="images/shopify-plus-wireframes.png" alt="Low-fidelity wireframes" style="width:100%;height:100%;object-fit:contain;position:absolute;inset:0;background:#f5f2ed;padding:1.5rem;" />
       </div>
     </div>
 
@@ -1163,5 +1137,11 @@
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
 })();
 </script>
-</body>
+<div class="foot">
+  <div class="foot-i">
+    <span>© 2026 JEEDA MASOUD</span>
+    <span>UX &amp; CONTENT DESIGNER</span>
+    <span>THIS SITE IS LIVE. ALWAYS UPDATING. ALWAYS EVOLVING.</span>
+  </div>
+</div></body>
 </html>
