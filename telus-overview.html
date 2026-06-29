@@ -445,11 +445,12 @@
   .foot-i span { font-size: 8px; letter-spacing: .18em; color: #F1EEE7; opacity: .7; }
   @media (max-width: 768px) { .foot-i { flex-direction: column; gap: 1rem; } }
 
-.totop-wrap{text-align:center;padding:1.25rem 24px;border-top:1px solid rgba(42,61,84,.12)}
-.totop{display:inline-flex;align-items:center;gap:.55em;font-family:var(--sans);font-size:12px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);opacity:.55;text-decoration:none;transition:opacity .25s ease,color .25s ease}
-.totop .arr{display:inline-block;transition:transform .25s ease}
-.totop:hover{opacity:1;color:var(--accent)}
-.totop:hover .arr{transform:translateY(-3px)}
+
+.reflection{position:relative;}
+.reflection-inner{position:relative;}
+.reflection-top{position:absolute;right:0;bottom:0;color:var(--cream);font-size:24px;line-height:1;text-decoration:none;opacity:.7;transition:color .25s ease,opacity .25s ease,transform .25s ease;}
+.reflection-top:hover{color:#6F9FC8;opacity:1;transform:translateY(-3px);}
+@media(max-width:768px){.reflection-top{font-size:20px;}}
 </style>
 </head>
 <body>
@@ -754,11 +755,8 @@
     <p class="reflection-text">
       The number that stays with me from this project isn't the +60% or the +21% — it's the 99.4%. When nearly every customer who encounters a redesigned experience chooses to stay, it means the content did its job: <em>it got out of the way and let people do what they came to do.</em> That's the goal every time.
     </p>
+  <a href="#top" class="reflection-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">&#8593;</a>
   </div>
-</div>
-
-<div class="totop-wrap">
-  <a href="#top" class="totop">Back to top <span class="arr">&#8593;</span></a>
 </div>
 
 <div class="foot">
